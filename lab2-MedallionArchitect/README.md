@@ -15,6 +15,7 @@ The Medallion Architecture organizes data into three stages or "layers," each se
    - **Example**: Aggregated sales reports, KPIs dashboards, or pre-calculated metrics for business intelligence.
 +-----------------+        +-----------------+        +-----------------+
 
+
 ### **How It Works**
 
 1. **Data Ingestion**: Raw data flows into the **Bronze Layer**.
