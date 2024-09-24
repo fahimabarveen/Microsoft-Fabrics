@@ -150,7 +150,7 @@ END;
 
 --step6-execute data
 
-    --Insert data into fact_sales table
+--Insert data into fact_sales table
 
 EXEC SalesData.LoadSalesData 2020;
 
@@ -190,7 +190,6 @@ ORDER BY
 --From dim_customer: customer_name
 --From dim_region: city, state, region
 
-
 SELECT 
     dc.customer_name, 
     dr.city, 
@@ -213,7 +212,7 @@ ORDER BY
 --3. Determine Monthly and Yearly Sales Patterns to Optimize Marketing Strategies
 --Required columns:
 
-        --From fact_sales: sales, order_date
+--From fact_sales: sales, order_date
 
 SELECT 
     YEAR(fs.order_date) AS year, 
