@@ -1,3 +1,5 @@
+----------------------------Load Data via Pipeline----->Warehouse SQL Queries------------------------
+
 --step1- check d create salesdata table
 
 IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = 'SalesData')
@@ -161,11 +163,11 @@ WHERE year(order_date) = 2020;
 
 --step8-Trends Various Categories
 
-   --1. Understand Sales Trends Across Various Categories (e.g., Beverages, Snacks, Eggs, etc.)
-     --Required columns:
+--1. Understand Sales Trends Across Various Categories (e.g., Beverages, Snacks, Eggs, etc.)
+--Required columns:
 
-      --From fact_sales: sales, order_date
-      --From dim_category: category_name
+--From fact_sales: sales, order_date
+--From dim_category: category_name
 
 SELECT 
     dc.category_name, 
@@ -183,11 +185,11 @@ ORDER BY
 
 --step9-Top-Selling Items and Customers in Each Region
 
-   --2. Identify Top-Selling Items and Customers in Each Region
-    --Required column:
+--2. Identify Top-Selling Items and Customers in Each Region
+--Required column:
 
-      --From fact_sales: sales
-      --From dim_customer: customer_name
+--From fact_sales: sales
+--From dim_customer: customer_name
 --From dim_region: city, state, region
 
 
@@ -210,8 +212,8 @@ ORDER BY
 
 --step10-Monthly and Yearly Sales Patterns(Marketing Strategies)
 
-   --3. Determine Monthly and Yearly Sales Patterns to Optimize Marketing Strategies
-      --Required columns:
+--3. Determine Monthly and Yearly Sales Patterns to Optimize Marketing Strategies
+--Required columns:
 
         --From fact_sales: sales, order_date
 
@@ -226,7 +228,7 @@ GROUP BY
 ORDER BY 
     year DESC, month DESC;
 
-         --Total Discounted Sales
+--Total Discounted Sales
 
 SELECT 
     YEAR(fs.order_date) AS year, 
@@ -240,7 +242,7 @@ GROUP BY
 ORDER BY 
     year DESC, month DESC;
 
-        --Net Sales
+--Net Sales
 
 SELECT 
     YEAR(fs.order_date) AS year, 
