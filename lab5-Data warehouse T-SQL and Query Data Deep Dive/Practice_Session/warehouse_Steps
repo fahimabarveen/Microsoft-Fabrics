@@ -64,7 +64,6 @@ GO
 
 --step3-distinct data
 
-
 -- To find unique RankID to each customer in Customer table
 
 INSERT INTO SalesData.dim_customer (customer_id, customer_name)
@@ -93,7 +92,6 @@ SELECT DISTINCT
 FROM [MarketingData_Lakehouse].[dbo].[lakehousedata_table];
 
 --step4-create view
-
 
 CREATE VIEW SalesData.vw_fact_sales_staging
 AS
