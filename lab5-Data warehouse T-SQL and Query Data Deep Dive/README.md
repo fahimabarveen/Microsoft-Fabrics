@@ -48,4 +48,49 @@ Stored Procedures (Load Data)
         v
 Power BI Reports (Visual Analysis)
 
+ ### PART 1: Load and Transform Sales Data
+
+#### Step 1: Load Data into Microsoft Fabric Lakehouse
+
+**Goal**: Load the provided CSV file (sales data) into a Lakehouse.
+
+**Solution**:
+
+1. **Create Lakehouse and Folder**:
+   - Download the data file from [this link](https://raw.githubusercontent.com/mofaizal/microsoft_fabric_playground/refs/heads/main/dataset/sales_data_05092024.csv).
+
+2. **Create a Fabric Pipeline**:
+   - Set up a data pipeline that monitors the storage location where the CSV files are uploaded. This pipeline will automate the data load process.
+
+3. **Notebook Integration**:
+   - Use a notebook to automate transformations on the raw CSV data and load it into a table in the Lakehouse.
+
+   ```python
+
+   # Sample code to load CSV to Lakehouse
+   df = spark.read.format("csv").option("header", "true").load("Files/data/*.csv")
+   df.write.format("delta").saveAsTable("lakehousedata_table")
+   ```
+
+4. **Schedule the Pipeline**:
+   - Schedule the pipeline to run daily or whenever new files are detected.
+
+#### Step 2: Create Warehouse
+
+1. **Create Warehouse**:
+   - Set up the warehouse environment where the data will be stored and analyzed.
+
+2. **Create Fact and Dimension Tables in the Warehouse**:
+   - **Goal**: Use the data schema to create a star schema in the warehouse.
+
+   **Solution**:
+   - **Fact Table**: `FactSales`, storing transactional sales data.
+   - **Dimension Tables**:
+     - `dim_customer`: Customer details.
+     - `dim_category`: Category and sub-category details.
+     - `dim_region`: City and state details.
+
+3. **Create Schema**:
+   - Start by creating a schema to keep your data well-organized.
+
                       
