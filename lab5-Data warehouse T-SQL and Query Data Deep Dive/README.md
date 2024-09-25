@@ -11,20 +11,21 @@ The supermarket’s marketing department aims to:
 4.Evaluate customer preferences by city and region.
 5.Measure the impact of discounts on overall profits and losses.
 
-Solution
-1.Load Data:Collect daily sales data in CSV files.
+Solution:
+
+1.Load Data: Collect daily sales data in CSV files.
 
 Load these CSV files into Microsoft Fabric’s Lakehouse using pipelines.
 Transform the data into warehouse tables.
 
-2.Warehouse Schema:Create fact tables (e.g., fact_sales) to store sales data.
+2.Warehouse Schema: Create fact tables (e.g., fact_sales) to store sales data.
 
 Create dimension tables (e.g., dim_customer, dim_product, dim_region) to store related information.
 
-3.Stored Procedures:Develop stored procedures to load data from CSV files into the warehouse tables.
+3.Stored Procedures: Develop stored procedures to load data from CSV files into the warehouse tables.
 Use parameters such as year and city for data loading.
 
-4.Power BI Reports:Use Power BI to generate visual reports.
+4.Power BI Reports: Use Power BI to generate visual reports.
 
 Analyze total sales, top customers, and high-performing products.
 
