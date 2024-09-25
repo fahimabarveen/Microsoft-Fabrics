@@ -3,12 +3,17 @@
 Here’s a simplified version of your storyline and architecture diagram for loading CSV sales data into a Lakehouse for analysis by a supermarket’s marketing department:
 
 Goal: Analyze Sales Data for Insights
+
 The supermarket’s marketing department aims to:
 
 1.Understand sales trends across various categories (e.g., Beverages, Snacks, Eggs).
+
 2.Identify top-selling items and customers in each region.
+
 3.Determine monthly and yearly sales patterns to optimize marketing strategies.
+
 4.Evaluate customer preferences by city and region.
+
 5.Measure the impact of discounts on overall profits and losses.
 
 Solution:
@@ -16,6 +21,7 @@ Solution:
 1.Load Data: Collect daily sales data in CSV files.
 
 Load these CSV files into Microsoft Fabric’s Lakehouse using pipelines.
+
 Transform the data into warehouse tables.
 
 2.Warehouse Schema: Create fact tables (e.g., fact_sales) to store sales data.
@@ -30,6 +36,7 @@ Use parameters such as year and city for data loading.
 Analyze total sales, top customers, and high-performing products.
 
 Architecture Diagram(Data Warehouse):
+
 Here’s a simple architecture diagram to illustrate the process:
 
 CSV Files (SalesData)
@@ -58,12 +65,15 @@ Power BI Reports (Visual Analysis)
 **Solution**:
 
 1. **Create Lakehouse and Folder**:
+2. 
    - Download the data file from [this link](https://raw.githubusercontent.com/mofaizal/microsoft_fabric_playground/refs/heads/main/dataset/sales_data_05092024.csv).
 
-2. **Create a Fabric Pipeline**:
+3. **Create a Fabric Pipeline**:
+4. 
    - Set up a data pipeline that monitors the storage location where the CSV files are uploaded. This pipeline will automate the data load process.
 
-3. **Notebook Integration**:
+5. **Notebook Integration**:
+6. 
    - Use a notebook to automate transformations on the raw CSV data and load it into a table in the Lakehouse.
 
    ```python
@@ -73,25 +83,30 @@ Power BI Reports (Visual Analysis)
    df.write.format("delta").saveAsTable("lakehousedata_table")
    ```
 
-4. **Schedule the Pipeline**:
+7. **Schedule the Pipeline**:
+   
    - Schedule the pipeline to run daily or whenever new files are detected.
 
 #### Step 2: Create Warehouse
 
 1. **Create Warehouse**:
+   
    - Set up the warehouse environment where the data will be stored and analyzed.
 
 2. **Create Fact and Dimension Tables in the Warehouse**:
-   - **Goal**: Use the data schema to create a star schema in the warehouse.
+   
+       **Goal**: Use the data schema to create a star schema in the warehouse.
 
    **Solution**:
+
    - **Fact Table**: `FactSales`, storing transactional sales data.
+   - 
    - **Dimension Tables**:
      - `dim_customer`: Customer details.
      - `dim_category`: Category and sub-category details.
      - `dim_region`: City and state details.
 
-3. **Create Schema**:
+1. **Create Schema**:
    - Start by creating a schema to keep your data well-organized.
 
                       
