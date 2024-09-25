@@ -65,15 +65,15 @@ Power BI Reports (Visual Analysis)
 **Solution**:
 
 1. **Create Lakehouse and Folder**:
-2. 
+   
    - Download the data file from [this link](https://raw.githubusercontent.com/mofaizal/microsoft_fabric_playground/refs/heads/main/dataset/sales_data_05092024.csv).
 
-3. **Create a Fabric Pipeline**:
-4. 
+2. **Create a Fabric Pipeline**:
+   
    - Set up a data pipeline that monitors the storage location where the CSV files are uploaded. This pipeline will automate the data load process.
 
-5. **Notebook Integration**:
-6. 
+3. **Notebook Integration**:
+   
    - Use a notebook to automate transformations on the raw CSV data and load it into a table in the Lakehouse.
 
    ```python
@@ -83,7 +83,7 @@ Power BI Reports (Visual Analysis)
    df.write.format("delta").saveAsTable("lakehousedata_table")
    ```
 
-7. **Schedule the Pipeline**:
+4. **Schedule the Pipeline**:
    
    - Schedule the pipeline to run daily or whenever new files are detected.
 
@@ -94,19 +94,18 @@ Power BI Reports (Visual Analysis)
    - Set up the warehouse environment where the data will be stored and analyzed.
 
 2. **Create Fact and Dimension Tables in the Warehouse**:
-   
-       **Goal**: Use the data schema to create a star schema in the warehouse.
 
-   **Solution**:
+ **Goal**: Use the data schema to create a star schema in the warehouse.
 
-   - **Fact Table**: `FactSales`, storing transactional sales data.
-   - 
-   - **Dimension Tables**:
+**Solution**:
+
+**Fact Table**: `FactSales`, storing transactional sales data.
+
+**Dimension Tables**:
      - `dim_customer`: Customer details.
      - `dim_category`: Category and sub-category details.
      - `dim_region`: City and state details.
 
-1. **Create Schema**:
+3. **Create Schema**:
+   
    - Start by creating a schema to keep your data well-organized.
-
-                      
