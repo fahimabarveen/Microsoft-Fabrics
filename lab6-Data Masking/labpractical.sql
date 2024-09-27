@@ -1,7 +1,4 @@
 ## 1. Dynamic Data Masking
-
-Dynamic data masking rules are applied to individual columns at the table level. Users without explicit permissions see masked values in query results, while users with permissions see unobscured data. The following exercise demonstrates applying various types of masks.
-
 ### Create the `Customers` Table
 
 Run the following T-SQL code to create the `Customers` table with masking rules:
@@ -22,12 +19,6 @@ INSERT dbo.Customers (CustomerID, FirstName, LastName, Phone, Email) VALUES
 (29489,'Frances','Adams','333-333-3333','frances0@adventure-works.com');
 
 SELECT * FROM dbo.Customers;
-
-Query Results
-
-1.FirstName: Shows the first letter followed by "XXXXXXX".
-2.Phone: Displays "xxxx".
-3.Email: Shows the first letter followed by "XXX@XXX.com".
 
 Testing as a Restricted User
 
@@ -50,7 +41,6 @@ SELECT * FROM dbo.Customers;
 The data should now appear unmasked.
 
 2. Row-Level Security (RLS)
-Row-level security restricts access to rows based on the identity or role of the user.
 
 Create the Sales Table
 Run the following T-SQL code:
@@ -105,7 +95,7 @@ SELECT * FROM dbo.Sales;
 You should only see rows corresponding to the logged-in user.
 
 3. Column-Level Security
-Column-level security allows control over which users can access specific columns.
+
 
 Create the Orders Table
 Run the following code:
@@ -144,50 +134,3 @@ SELECT OrderID, CustomerID FROM dbo.Orders;
 
 This should succeed, returning only accessible columns.
 
-4. Granular Permissions
-This section covers creating objects and managing permissions using GRANT and DENY.
-
-Create a Stored Procedure and Table
-Run:
-
-sql
-CREATE PROCEDURE dbo.sp_PrintMessage
-AS
-PRINT 'Hello World.';
-GO   
-
-CREATE TABLE dbo.Parts
-(
-    PartID INT,
-    PartName VARCHAR(25)
-);
-   
-INSERT dbo.Parts (PartID, PartName) VALUES
-(1234, 'Wheel'),
-(5678, 'Seat');
-GO
-
-Execute Procedure and Query Table
-
-sql
-EXEC dbo.sp_PrintMessage;
-GO   
-SELECT * FROM dbo.Parts;
-
-Setting Permissions
-Now deny select permissions and grant execute permission:
-
-sql
-DENY SELECT ON dbo.Parts TO [<username>@<your_domain>.com];
-GRANT EXECUTE ON dbo.sp_PrintMessage TO [<username>@<your_domain>.com];
-
-Testing Granular Permissions
-Log in as the specified user and run:
-
-sql
-EXEC dbo.sp_PrintMessage;
-GO
-   
-SELECT * FROM dbo.Parts;
-
-The stored procedure should execute, but selecting from the Parts table will fail due to DENY permissions.
